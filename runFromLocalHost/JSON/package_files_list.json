@@ -1,0 +1,38 @@
+[
+  {
+    "fileName": "1",
+    "fileType": "xml",
+    "sizeInMB": 9.456,
+    "creation": "22.01.2010"
+  },
+  {
+    "fileName": "2",
+    "fileType": "xml",
+    "sizeInMB": 1.434,
+    "creation": "15.11.2012"
+  },
+  {
+    "fileName": "3",
+    "fileType": "tiff",
+    "sizeInMB": 1.200,
+    "creation": "10.02.2011"
+  },
+  {
+    "fileName": "4",
+    "fileType": "jpg",
+    "sizeInMB": 2.433,
+    "creation": "15.02.2013"
+  },
+  {
+    "fileName": "5",
+    "fileType": "txt",
+    "sizeInMB": 0.600,
+    "creation": "17.07.2008"
+  },
+  {
+    "fileName": "6",
+    "fileType": "txt",
+    "sizeInMB": 0.350,
+    "creation": "03.04.2011"
+  }
+]

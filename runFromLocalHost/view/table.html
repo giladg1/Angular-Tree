@@ -1,0 +1,42 @@
+
+
+<!-- main stage -->
+<div id="section" ng-controller="TableController">
+
+
+    <div class="bs-example">
+        <ul class="nav nav-tabs">
+            <li><a href="#/table"><span class="glyphicon glyphicon-list-alt"></span> Table</a></li>
+            <li><a href="#/chart" ><span class="glyphicon glyphicon-align-left"></span> Chart</a></li>
+        </ul>
+    </div>
+
+
+    <br><br><br>
+
+    <div class="row">
+        <div class="col-md-8">
+            <table class="table table-bordered table-hover">
+                <thead>
+                <tr>
+                    <td class="TDhead"></td>
+                    <td class="TDhead">File Name</td>
+                    <td class="TDhead">File Size</td>
+                    <td class="TDhead">Creation Date</td>
+                </tr>
+                </thead>
+                <!-- this part will be dynamic with Angular -->
+                <tr ng-repeat="item in name">
+                    <td><input type="checkbox"></td>
+                    <td>{{item.fileName | uppercase}}</td>
+                    <td>{{item.sizeInMB + " MB"}}</td>
+                    <td>{{item.creation}}</td>
+                </tr>
+            </table>
+        </div>
+
+    </div>
+
+
+
+</div>

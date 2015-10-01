@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Info Chart</title>
+
+    <!-- Bootstrap CSS-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
+    <!-- Bootstrap JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+    <!-- style -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- google chart -->
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+
+
+    <!-- TreeView Library -->
+    <link rel="stylesheet" href="css/treeVIew.css">
+    <!-- fonts -->
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:400,300|Oswald:400,300:latin" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+
+    <!-- Angular Vendor -->
+    <script src="js/vendor/angular.min.js"></script>
+    <script src="js/vendor/angular-route.min.js"></script>
+
+    <!-- Angular -->
+    <script src="js/myApp.js"></script>
+    <script src="js/services/services.js"></script>
+    <script src="js/controller/mainController.js"></script>
+    <script src="js/controller/tableController.js"></script>
+    <script src="js/controller/chartController.js"></script>
+
+</head>
+<body ng-app="myApp">
+
+
+<!-- tree view -->
+<div id="nav" ng-controller="MainController">
+
+
+    <!-- this will work only if you loaded the data first. according to the task you gave me this data only available after pressing folder and subfolder-->
+    <form class="form-inline" role="form">
+        <div class="form-group has-success has-feedback">
+            <label class="control-label" for="inputSuccess4"></label>
+            <input type="text" class="form-control" id="inputSuccess4" ng-model="query" placeholder="File Extension Search">
+            <span class="glyphicon glyphicon-search form-control-feedback"></span>
+        </div>
+    </form>
+
+
+    <!-- tree view -->
+    <br><br>
+    <div class="css-treeview">
+        <ul>
+            <li><input type="checkbox" id="item-8" ng-click="loadFolders()"/><label class="quickAccess" for="item-8">Quick Access (empty)</label>
+            </li>
+            <li><input type="checkbox" id="item-0" ng-click="loadFolders()"/><label class="firstPlace" for="item-0">Application</label>
+
+                <ul>
+                    <li ng-click="loadFolder2()" ng-repeat="item in firstList"><input type="checkbox" id="item-0-{{$index}}"/><label ng-class="{'secondPlaceWorld': {{item.folderName == 'MyWeb'}}, 'secondPlace': {{item.folderName != 'MyWeb'}}, 'secondPlaceEnvelope': {{item.folderName == 'MyExchange'}}}" for="item-0-{{$index}}">{{item.folderName}}</label>
+                      <ul>
+                          <li ng-repeat="item in secondList" ng-click="showFiles()" style="padding-bottom: 6px; padding-top: 5px;"><input type="checkbox" id="item-1-{{$index}}"/><span class="backColor"><label class="thirdPlace" for="item-1-{{$index}}" ng-click="loadFiles()">{{item.folderName}} ({{numberOfFiles}})</label></span>
+                            <ul>
+                                <li class="myLi" ng-repeat="filesItem in myFiles | filter: query" style="padding-left: 15px">{{filesItem.fileName + "." + filesItem.fileType}}</li>
+                            </ul>
+                          </li>
+                      </ul>
+                    </li>
+                </ul>
+
+
+            </li>
+
+        </ul>
+    </div>
+
+
+
+</div>
+
+
+<!-- single page view between table and chart -->
+<div ng-view=""></div>
+
+
+</body>
+</html>
